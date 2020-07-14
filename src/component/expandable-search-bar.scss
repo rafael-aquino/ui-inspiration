@@ -1,0 +1,77 @@
+.search {
+  --clr-primary: #ee6352;
+  --size: 3rem;
+
+  width: var(--size);
+  height: var(--size);
+
+  display: flex;
+  position: relative;
+
+  font-size: 1.25em;
+
+  padding: 3px;
+  border: 2px solid var(--clr-primary);
+  border-radius: 100px;
+
+  transition: width 800ms cubic-bezier(0.18, 0.89, 0.32, 1.1);
+}
+
+.search__input {
+
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+
+  flex-grow: 1;
+
+  padding: .25em 1em;
+  border: 0;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  opacity: 0;
+  outline: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.search__submit {
+
+  width: calc(var(--size) - 10px);
+  height: calc(var(--size) - 10px);
+
+  font-size: calc( var(--size) / 3);
+
+  margin-left: auto;
+  border: 0;
+
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--clr-body);
+  background: 0;
+  transition: background 200ms ease-out;
+}
+
+.search:focus-within {
+  width: 100%;  
+  .search__input {
+    width: calc(100% - var(--size));
+    z-index: initial;
+    cursor: initial;
+    opacity: 1;
+  }  
+  .search__submit {
+    background: var(--clr-primary);
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    transition: transform 400ms ease-out;    
+    &:hover,
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 10px rgba(0,0,0,.65);
+    }
+  }
+}
